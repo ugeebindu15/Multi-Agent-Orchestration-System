@@ -1,29 +1,46 @@
-# Create a new Python file named main.py and implement the main function
+import argparse
 
-def main(issue_number):
-    """
-    Main function to process the issue number.
-    
-    :param issue_number: The issue number to process.
-    :raises ValueError: If the issue number is invalid or negative.
-    """
-    # Add error handling for invalid or negative issue numbers
+def run_agent(issue_number: int):
+    # Added error handling for invalid issue numbers
     if issue_number <= 0:
         raise ValueError("Issue number must be a positive integer.")
 
-    # Placeholder for further processing of the issue number
-    print(f"Processing issue number: {issue_number}")
+    # Existing code...
+    print(f"\n{'='*50}")
+    print(f"🤖 Multi-Agent System Starting")
+    print(f"📌 Target Issue: #{issue_number}")
+    print(f"{'='*50}\n")
 
-# Write a simple test case to verify the error handling
+    # Initialize the state — only issue_number is known at start
+    initial_state: AgentState = {
+        "issue_number": issue_number,
+        # Other fields...
+    }
+
+    # Run the graph
+    final_state = graph.invoke(initial_state)
+
+    # Print results
+    print(f"\n{'='*50}")
+    print(f" Multi-Agent System Complete!")
+    print(f"{'='*50}")
+    print(f" Issue:      #{final_state['issue_number']} — {final_state['issue_title']}")
+    print(f" Complexity: {final_state['complexity']}")
+    print(f" PR URL:     {final_state['pr_url']}")
+    print(f"{'='*50}\n")
+
+    return final_state
+
+
 if __name__ == "__main__":
-    try:
-        # Test with an invalid issue number
-        main(-1)
-    except ValueError as e:
-        print(e)  # Expected output: "Issue number must be a positive integer."
-
-    try:
-        # Test with a valid issue number
-        main(5)  # Expected output: "Processing issue number: 5"
-    except ValueError as e:
-        print(e)
+    parser = argparse.ArgumentParser(
+        description="Multi-Agent GitHub Issue Fixer"
+    )
+    parser.add_argument(
+        "--issue",
+        type=int,
+        required=True,
+        help="GitHub issue number to fix"
+    )
+    args = parser.parse_args()
+    run_agent(args.issue)
