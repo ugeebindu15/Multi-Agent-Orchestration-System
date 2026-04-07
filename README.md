@@ -4,10 +4,10 @@ An autonomous AI system that takes a GitHub Issue as input and automatically res
 
 ## Demo
 
-Input: GitHub Issue #1 — "Fix missing error handling in main function"
-
-Output: [Auto-generated Pull Request](https://github.com/ugeebindu15/Multi-Agent-Orchestration-System/pull/2)
-
+| | Input | Output |
+|---|---|---|
+| **Run 1** | Issue #1 — Fix missing error handling in main function | [Auto-generated PR](https://github.com/ugeebindu15/Multi-Agent-Orchestration-System/pull/2) |
+| **Run 2** | Issue #1 — Add input validation for empty or whitespace queries (Medical Chatbot) | [Auto-generated PR](https://github.com/ugeebindu15/-Build-a-Complete-Medical-Chatbot-with-LLMs-LangChain-Pinecone-Flask-AWS/pull/2) |
 ## How It Works
 
 Five specialized AI agents collaborate through a shared state object:
